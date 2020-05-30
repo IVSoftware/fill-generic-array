@@ -26,10 +26,16 @@ namespace fill_generic_array
 
 
             Console.WriteLine();
-            Console.WriteLine("But perhaps it's redundant, because Enumerable is already Generic!");
+            Console.WriteLine("But perhaps it's redundant, because Enumerable<T> is already Generic!");
 
             arrayOfT = Enumerable.Range(1, LENGTH).Select(i => new SomeClass(Random.Next(1, 501))).ToArray();
             Console.WriteLine(string.Join(Environment.NewLine, arrayOfT.Select(field => field.Value)));
+
+
+            Console.WriteLine();
+            Console.WriteLine("Now, if all you want are arrays of int:");
+            int[] arrayOfInt = Enumerable.Range(1, LENGTH).Select(i => Random.Next(1, 501)).ToArray();
+            Console.WriteLine(string.Join(Environment.NewLine, arrayOfInt));
 
             // Pause
             Console.WriteLine(Environment.NewLine + "Any key to exit");
