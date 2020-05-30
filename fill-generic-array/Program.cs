@@ -45,10 +45,6 @@ namespace fill_generic_array
                 Value = value;
             }
             public int Value { get; set; }
-            public override string ToString()
-            {
-                return Value.ToString(); ;
-            }
         }
     }
 }
