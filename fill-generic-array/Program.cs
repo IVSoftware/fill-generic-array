@@ -4,18 +4,23 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace fill_generic_array
 {
     class Program
     {
         static Random Random { get; } = new Random();
+        const int LENGTH = 10;
         static void Main(string[] args)
         {
+            
             Console.WriteLine();
             Console.WriteLine("With a generic you could do this...");
 
-            SomeClass[] arrayOfT = new SomeClass[10];
+
+            SomeClass[] arrayOfT;
+            arrayOfT = new SomeClass[LENGTH];
             fillGenericArray<SomeClass>(arrayOfT);
             Console.WriteLine(string.Join(Environment.NewLine, arrayOfT.Select(field=>field.Value)));
 
@@ -23,9 +28,8 @@ namespace fill_generic_array
             Console.WriteLine();
             Console.WriteLine("But perhaps it's redundant, because Enumerable is already Generic!");
 
-            SomeClass[] arrayOfT_2 = Enumerable.Repeat<SomeClass>(new SomeClass(Random.Next(1, 501)), 10).ToArray();
+            arrayOfT = Enumerable.Range(1, LENGTH).Select(i => new SomeClass(Random.Next(1, 501))).ToArray();
             Console.WriteLine(string.Join(Environment.NewLine, arrayOfT.Select(field => field.Value)));
-
 
             // Pause
             Console.WriteLine(Environment.NewLine + "Any key to exit");
